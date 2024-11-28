@@ -21,7 +21,10 @@ var lengthOfLongestSubstring = function(s) {
       subChar.add(s[rightIndex]);
 
       maxCounter = Math.max(rightIndex-lefIndex + 1, maxCounter);
+    }
 
+    return maxCounter;
+  };
 
 /**
  * @param {string} s
