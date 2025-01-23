@@ -22,4 +22,4 @@ var findMaxAverage = function(nums, k) {
   
   
   return maxAverage;
-};
+};  
