@@ -56,23 +56,25 @@ function solution(N,A){
     let maxInt = -1;
     const removeNeg = A.filter(x => x > 0);
 
+  //Missing Integer(brute force)
+  function solution(A){
+    let misInt = 1;
+    let maxInt = -1;
+    const removeNeg = A.filter(x => x >= 0);
+
     // const removeRepeat =  new Set(A);
-    if (removeNeg.length < 1){
-        misInt = 1;
-    }else if (removeNeg.length === 1 && removeNeg[0] > 1){
+    if (removeNeg.length > 1){
+        for( let i = 0; i <  removeNeg.length -1; i++){
+            if(removeNeg[i] <= removeNeg[i+1]){
+                maxInt = Math.max(maxInt,removeNeg[i+1]);
+                misInt = maxInt + 1;
+            } else {
+                maxInt = removeNeg[i];
+                misInt = maxInt + 1;
+            }
+        }
+    }else if (removeNeg.length === 1 ){
         misInt = removeNeg[0] + 1;
     }
-    else if (removeNeg.length > 1 ){
-        for( let i = 0; i <  removeNeg.length -1; i++){
-      if(removeNeg[i] <= removeNeg[i+1]){
-        maxInt = Math.max(maxInt,removeNeg[i+1]);
-        misInt = maxInt + 1;
-      } else {
-        maxInt = removeNeg[i];
-        misInt = maxInt + 1;
-      }
-    }
-    }
-
     return misInt;
   }
