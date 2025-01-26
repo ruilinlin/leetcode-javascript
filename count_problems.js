@@ -37,14 +37,42 @@ return 0;
 function solution(N,A){
   let result = new Array(N).fill(0);
   let maxCounter =0;
+  let lazyMax = 0;
   for(let i =0; i < A.length; i++){
     if(A[i] === N +1){
-      // result = result.map(() => maxCounter);
-      result = result.fill(maxCounter);
-    } else{
-      result[A[i]] +=1;
-      maxCounter ++;
+       result = result.map(() => maxCounter);
+    //   maxCounter = Math.max(lazyMax,maxCounter);
+    } else if (1 <= A[i] && A[i]<= N){
+      result[A[i]-1] += 1;
+      maxCounter = Math.max(result[A[i] -1], maxCounter);
       }
     }
     return result;
+  }
+
+  //Missing Integer(brute force)
+  function solution(A){
+    let misInt = 1;
+    let maxInt = -1;
+    const removeNeg = A.filter(x => x > 0);
+
+    // const removeRepeat =  new Set(A);
+    if (removeNeg.length < 1){
+        misInt = 1;
+    }else if (removeNeg.length === 1 && removeNeg[0] > 1){
+        misInt = removeNeg[0] + 1;
+    }
+    else if (removeNeg.length > 1 ){
+        for( let i = 0; i <  removeNeg.length -1; i++){
+      if(removeNeg[i] <= removeNeg[i+1]){
+        maxInt = Math.max(maxInt,removeNeg[i+1]);
+        misInt = maxInt + 1;
+      } else {
+        maxInt = removeNeg[i];
+        misInt = maxInt + 1;
+      }
+    }
+    }
+
+    return misInt;
   }
