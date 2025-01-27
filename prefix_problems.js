@@ -20,3 +20,13 @@ function solution(A) {
 
   return passingCars;
 }
+
+// countdiv
+function solution(A, B, K) {
+  // 计算从 0 到 B 之间可以被 K 整除的数字个数
+  const divisibleUpToB = Math.floor(B / K);
+  // 计算从 0 到 A-1 之间可以被 K 整除的数字个数
+  const divisibleUpToA = Math.floor((A - 1) / K);
+  // 两者的差即为 [A, B] 区间内可以被 K 整除的数字个数
+  return divisibleUpToB - divisibleUpToA;
+}
