@@ -22,12 +22,14 @@ function solution(A){
 // fish
 function solution(A, B){
   let stack = new Array();
+  // 向上存活鱼的个数
   let alive = 0;
 
   for(let i = o; i < A.length; i++){
-    if(B[i] === 1)[
+    if(B[i] === 1){      
       stack.push(A[i]);
-    ]else{
+    }else{
+      // stack.length代表向下存活鱼的个数
       while(stack.length >0){
         if(stack[stack.length -1] > A[i]){
           break;
