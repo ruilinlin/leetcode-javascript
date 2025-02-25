@@ -44,3 +44,18 @@ function solution(A, B){
   }
   return alive + stack.length;
 }
+
+// nesting
+
+function solution(S) {
+  const stack = [];
+  for(const char of S){
+      if (char === '('){
+          stack.push('(');
+      }else{
+          if (stack.length === 0) return 0;
+          stack.pop();
+      }
+  }
+  return stack.length ===0 ? 1 : 0;
+}
