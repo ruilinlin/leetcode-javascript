@@ -8,5 +8,17 @@ function solution(A){
       stack.pop();
     }
   }
-  return stack[0];
+  if(stack.length === 0)
+    return -1;
+
+  const candidate = stack[0];
+  let count = 0;
+  for(let nums of A){
+    if (nums === candidate)
+      count++;
+
+  }
+  if(count > A.length / 2)
+    return A.indexOf(candidate);
+  return -1;
 }
