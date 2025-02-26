@@ -59,3 +59,20 @@ function solution(S) {
   }
   return stack.length ===0 ? 1 : 0;
 }
+
+
+//stone wall
+function solution(H){
+  const stack = [];
+  let counter =0;
+  for( const height of H){
+    while (stack.length > 0 && stack[stack.length -1] <= height){
+      stack.pop();
+      counter++;
+    }
+    if(stack.length ===0 || stack[stack.length -1] > height){
+      stack.push(height);
+    }
+  }
+  return counter + stack.length;
+}
