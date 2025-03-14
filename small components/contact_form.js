@@ -1,5 +1,33 @@
 import { API_URL } from "../config";
 
+export default function contactFormInterface() {
+ return (
+  <form onSubmit={contactForm}
+  action={`${API_URL}/contact`}
+  method="POST">
+
+    <div>
+      <label htmlFor="name-input">Name</label>
+      <input id="name-input" id="name" type="text"/>
+    </div>
+
+    <div>
+      <label htmlFor="email-input">Email</label>
+      <input id="email-input" id="email" type="email"/>
+    </div>
+
+    <div>
+      <label htmlFor="message-input">Message</label>
+      <textarea id="message-input" name="message"></textarea>
+    </div>
+    <div>
+      <button>Send</button>
+    </div>
+
+  </form>
+ )
+
+}
 async function contactForm(event) {
   const form = event.target;
 
